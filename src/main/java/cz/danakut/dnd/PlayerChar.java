@@ -7,12 +7,15 @@ public class PlayerChar {
 
     String name;
     Race race;
-    String sex;
+    Sex sex;
+    Size size;
+    Speed speed;
+    List<Language> languages;
+
     Abilities abilities;
     int hitPoints;
     Alignment alignment;
-    Size size;
-    Speed speed;
+
     Map<AbilityName, Integer> savingThrows;
     List<Resistance> damageResistances;
     List<Resistance> damageImmunities;

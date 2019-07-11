@@ -1,7 +1,14 @@
 package cz.danakut.dnd;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public abstract class Race {
     Enum subrace;
+    static Speed speed;
+    static Size size;
+    static List<Language> languages;
 
     Race() {
 
@@ -18,6 +25,10 @@ class Dwarf extends Race {
         MOUNTAIN
     }
 
+    static Speed speed = new Speed(25);
+    static Size size = Size.MEDIUM;
+    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.DWARVISH));
+
     Dwarf(Subrace subrace) {
         super(subrace);
     }
@@ -30,6 +41,10 @@ class Elf extends Race {
         DARK
     }
 
+    static Speed speed = new Speed(30);
+    static Size size = Size.MEDIUM;
+    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.ELVISH));
+
     Elf(Subrace subrace) {
         super(subrace);
     }
@@ -41,17 +56,27 @@ class Halfling extends Race {
         STOUT
     }
 
+    static Speed speed = new Speed(25);
+    static Size size = Size.SMALL;
+    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.HALFLING));
+
     Halfling(Subrace subrace) {
         super(subrace);
     }
 }
 
 class Human extends Race {
+    static Speed speed = new Speed(30);
+    static Size size = Size.MEDIUM;
+    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON));
 
+    //+one extra language
 }
 
 class Dragonborn extends Race {
-
+    static Speed speed = new Speed(30);
+    static Size size = Size.MEDIUM;
+    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.DRACONIC));
 }
 
 class Gnome extends Race {
@@ -60,18 +85,33 @@ class Gnome extends Race {
         ROCK
     }
 
+    static Speed speed = new Speed(25);
+    static Size size = Size.SMALL;
+    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.GNOMISH));
+
     Gnome(Subrace subrace) {
         super(subrace);
     }
 }
 
 class Half_elf extends Race {
+    static Speed speed = new Speed(30);
+    static Size size = Size.MEDIUM;
+    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.ELVISH));
+
+    //+one extra language
 }
 
 class Half_orc extends Race {
+    static Speed speed = new Speed(30);
+    static Size size = Size.MEDIUM;
+    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.ORC));
 }
 
 class Tiefling extends Race {
+    static Speed speed = new Speed(30);
+    static Size size = Size.MEDIUM;
+    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.INFERNAL));
 }
 
 

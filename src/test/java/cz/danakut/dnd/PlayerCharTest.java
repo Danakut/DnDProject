@@ -22,5 +22,14 @@ public class PlayerCharTest {
         testChar.race = new Elf(Elf.Subrace.WOOD);
         assertEquals(Elf.Subrace.WOOD, testChar.race.subrace);
 
+        testChar.sex = Sex.FEMALE;
+        assertEquals("FEMALE", testChar.sex.toString());
+
+        testChar.speed = Dwarf.speed;
+        assertEquals(25, testChar.speed.walk);
+        assertEquals(0, testChar.speed.fly);
+
+        testChar.size = Dwarf.size;
+
     }
 }
