@@ -1,49 +1,77 @@
 package cz.danakut.dnd;
 
-public enum Race {
+public abstract class Race {
+    Enum subrace;
 
-    ;
+    Race() {
 
-    public enum Dwarf {
+    }
+
+    Race(Enum subrace) {
+        this.subrace = subrace;
+    }
+}
+
+class Dwarf extends Race {
+    enum Subrace {
         HILL,
         MOUNTAIN
     }
 
-    public enum Elf {
+    Dwarf(Subrace subrace) {
+        super(subrace);
+    }
+}
+
+class Elf extends Race {
+    enum Subrace {
         HIGH,
         WOOD,
         DARK
     }
 
-    public enum Halfling {
+    Elf(Subrace subrace) {
+        super(subrace);
+    }
+}
+
+class Halfling extends Race {
+    enum Subrace {
         LIGHTFOOT,
         STOUT
     }
 
-    public enum Human {
-        DEFAULT
+    Halfling(Subrace subrace) {
+        super(subrace);
     }
+}
 
-    public enum Dragonborn {
-        DEFAULT
-    }
+class Human extends Race {
 
-    public enum Gnome {
+}
+
+class Dragonborn extends Race {
+
+}
+
+class Gnome extends Race {
+    enum Subrace {
         FOREST,
         ROCK
     }
 
-    public enum Half_elf {
-        DEFAULT
+    Gnome(Subrace subrace) {
+        super(subrace);
     }
-
-    public enum Half_orc {
-        DEFAULT
-    }
-
-    public enum Tiefling {
-        DEFAULT
-    }
-
-
 }
+
+class Half_elf extends Race {
+}
+
+class Half_orc extends Race {
+}
+
+class Tiefling extends Race {
+}
+
+
