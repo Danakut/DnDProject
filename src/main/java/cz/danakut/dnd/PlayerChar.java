@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 public class PlayerChar {
 
     String name;
-    Race race;
     Sex sex;
+    Race race;
     Size size;
     Speed speed;
     List<Language> languages;
@@ -40,6 +40,16 @@ public class PlayerChar {
     private void initializeSkills() {
         Stream<SkillName> skillNameStream = Arrays.stream(SkillName.values());
         this.skills = skillNameStream.collect(Collectors.toMap(name -> new Skill(name), name -> Utilities.INITIAL_SKILL_VALUE));
+    }
+
+    public void setSkillScore(SkillName name, int score) {
+        Skill skill = new Skill(name);
+        skills.put(skill, score);
+    }
+
+    public int getSkillScore(SkillName name) {
+        Skill key = new Skill(name);
+        return skills.get(key);
     }
 
 }
