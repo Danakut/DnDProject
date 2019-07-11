@@ -11,7 +11,23 @@ public class AbilityTest {
     @DisplayName("Ability (name, score) created.")
     public void testConstructor() {
         Ability tested = new Ability(AbilityName.CONSTITUTION, 10);
-        assertEquals("CONSTITUTION 10/+0", tested.toString());
+        //custom String is used as actual value instead of Ability.toString,
+        // since getModifierWithSign() - a part of toString() - has not been tested at this point
+        assertEquals("CONSTITUTION 10/0", tested.getName() + " " + tested.getScore() + "/" + tested.getModifier());
+    }
+
+    @Test
+    @DisplayName("Modifiers are properly converted to Strings.")
+    void testModifierWithSign() {
+        Ability zeroModifier = new Ability(AbilityName.WISDOM, 11);
+        assertEquals("+0", zeroModifier.getModifierWithSign());
+
+        Ability negModifier = new Ability(AbilityName.WISDOM, 9);
+        assertEquals("-1", negModifier.getModifierWithSign());
+
+        Ability posModifier = new Ability(AbilityName.WISDOM, 12);
+        assertEquals("+1", posModifier.getModifierWithSign());
+
     }
 
     @Test
@@ -22,8 +38,8 @@ public class AbilityTest {
         assertEquals("STRENGTH 20/+5", lowValue.toString());
 
         Ability highValue = new Ability(AbilityName.DEXTERITY, 17);
-        highValue.setScore(9);
-        assertEquals("DEXTERITY 9/-1", highValue.toString());
+        highValue.setScore(7);
+        assertEquals("DEXTERITY 7/-2", highValue.toString());
     }
 
     @Test
@@ -39,14 +55,5 @@ public class AbilityTest {
         assertEquals("Ability score out of bounds (0-30).", setScoreException.getMessage());
     }
 
-    @Test
-    @DisplayName("Modifiers are properly converted to Strings.")
-    void testModifierWithSign() {
-        Ability negModifier = new Ability(AbilityName.WISDOM, 5);
-        assertEquals("-3", negModifier.getModifierWithSign());
 
-        Ability posModifier = new Ability(AbilityName.WISDOM, 24);
-        assertEquals("+7", posModifier.getModifierWithSign());
-
-    }
 }
