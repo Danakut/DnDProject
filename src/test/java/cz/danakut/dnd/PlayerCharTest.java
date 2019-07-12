@@ -61,42 +61,6 @@ public class PlayerCharTest {
     }
 
     @Test
-    @DisplayName("playerChar.skills is properly initialized.")
-    public void testInitializeSkills() {
-        PlayerChar testChar = new PlayerChar();
-
-        Map<Skill, Integer> mockedMapValues = createMockedMapOfSkills();
-        assertEquals(mockedMapValues, testChar.skills);
-    }
-
-    private Map<Skill, Integer> createMockedMapOfSkills() {
-        Map<Skill, Integer> mockedMap = new HashMap<>();
-        Set<Skill> mockedMapKeys = createMockedMapKeys();
-        for (Skill skill : mockedMapKeys) {
-            mockedMap.put(skill, Utilities.INITIAL_SKILL_VALUE);
-        }
-        return mockedMap;
-    }
-
-    private Set<Skill> createMockedMapKeys() {
-        SkillName[] names = SkillName.values();
-        List<Skill> listOfSkills = new ArrayList<>();
-        for (SkillName name : names) {
-            listOfSkills.add(new Skill(name));
-        }
-        return new HashSet<>(listOfSkills);
-    }
-
-    @Test
-    @DisplayName("get/set skill")
-    public void testGetSetSkill() {
-        PlayerChar testChar = new PlayerChar();
-        testChar.setSkillScore(SkillName.HISTORY, 6);
-        assertEquals(6, testChar.getSkillScore(SkillName.HISTORY));
-        
-    }
-
-    @Test
     @DisplayName("languages")
     public void testLanguages() {
         PlayerChar testChar = new PlayerChar();

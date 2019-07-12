@@ -61,5 +61,11 @@ public class Skill {
         return convertedAbility + " (" + convertedName + ")";
     }
 
+    public SkillName getName() {
+        return name;
+    }
 
+    public AbilityName getAssociatedAbility() {
+        return associatedAbility;
+    }
 }

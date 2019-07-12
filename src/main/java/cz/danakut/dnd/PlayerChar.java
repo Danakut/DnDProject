@@ -14,8 +14,9 @@ public class PlayerChar {
     Size size;
     Speed speed;
     List<Language> languages;
+    SkillProficiencies proficiencies;
 
-    Map<Skill, Integer> skills;
+
 
 
     Abilities abilities;
@@ -34,22 +35,16 @@ public class PlayerChar {
     //rozdelit equipment model a fighting model; fight nema vybaveni, ale zato mu naskocily efekty a cisla z vybaveni
 
     PlayerChar() {
-        initializeSkills();
+        proficiencies = new SkillProficiencies();
+
     }
 
-    private void initializeSkills() {
-        Stream<SkillName> skillNameStream = Arrays.stream(SkillName.values());
-        this.skills = skillNameStream.collect(Collectors.toMap(name -> new Skill(name), name -> Utilities.INITIAL_SKILL_VALUE));
-    }
+    //function for a variable that is no longer used, but the lambda was hard to get right, so I'm keeping this snippet around O:-)
+//    private void initializeSkills() {
+//        Stream<SkillName> skillNameStream = Arrays.stream(SkillName.values());
+//        this.skills = skillNameStream.collect(Collectors.toMap(name -> new Skill(name), name -> Utilities.INITIAL_SKILL_VALUE));
+//    }
 
-    public void setSkillScore(SkillName name, int score) {
-        Skill skill = new Skill(name);
-        skills.put(skill, score);
-    }
 
-    public int getSkillScore(SkillName name) {
-        Skill key = new Skill(name);
-        return skills.get(key);
-    }
 
 }
