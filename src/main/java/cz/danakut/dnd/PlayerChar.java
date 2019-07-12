@@ -1,10 +1,9 @@
 package cz.danakut.dnd;
 
-import java.util.Arrays;
+import cz.danakut.dnd.enums.*;
+
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class PlayerChar {
 
@@ -13,8 +12,8 @@ public class PlayerChar {
     Race race;
     Size size;
     Speed speed;
-    List<Language> languages;
-    SkillProficiencies proficiencies;
+    List<Condition.Language> languages;
+    SkillProficiencies skillProficiencies;
 
 
 
@@ -35,8 +34,7 @@ public class PlayerChar {
     //rozdelit equipment model a fighting model; fight nema vybaveni, ale zato mu naskocily efekty a cisla z vybaveni
 
     PlayerChar() {
-        proficiencies = new SkillProficiencies();
-
+        skillProficiencies = new SkillProficiencies();
     }
 
     //function for a variable that is no longer used, but the lambda was hard to get right, so I'm keeping this snippet around O:-)

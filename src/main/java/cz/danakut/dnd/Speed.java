@@ -1,6 +1,6 @@
 package cz.danakut.dnd;
 
-//shows various speeds in feet/turn(?)
+//shows various speeds in feet/round
 public class Speed {
 
     int walk;

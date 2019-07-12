@@ -1,5 +1,7 @@
 package cz.danakut.dnd;
 
+import cz.danakut.dnd.enums.AbilityName;
+
 public class Abilities {
 
     private Ability strength;

@@ -1,5 +1,6 @@
 package cz.danakut.dnd;
 
+import cz.danakut.dnd.enums.AbilityName;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

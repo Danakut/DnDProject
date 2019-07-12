@@ -1,5 +1,8 @@
 package cz.danakut.dnd;
 
+import cz.danakut.dnd.enums.AbilityName;
+import cz.danakut.dnd.enums.SkillName;
+
 import java.util.Objects;
 
 public class Skill {

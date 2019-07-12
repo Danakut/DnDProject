@@ -1,7 +1,9 @@
 package cz.danakut.dnd;
 
+import cz.danakut.dnd.enums.Condition;
+
 public class Resistance {
 
-    DamageType type;
+    Condition.DamageType type;
     String threshold; //the type of material that cancels the benefit of the resistance, e.g. adamantine
 }

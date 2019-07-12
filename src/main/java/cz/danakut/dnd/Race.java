@@ -1,5 +1,8 @@
 package cz.danakut.dnd;
 
+import cz.danakut.dnd.enums.Condition;
+import cz.danakut.dnd.enums.Size;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +11,7 @@ public abstract class Race {
     Enum subrace;
     static Speed speed;
     static Size size;
-    static List<Language> languages;
+    static List<Condition.Language> languages;
 
     Race() {
 
@@ -27,7 +30,7 @@ class Dwarf extends Race {
 
     static Speed speed = new Speed(25);
     static Size size = Size.MEDIUM;
-    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.DWARVISH));
+    static List<Condition.Language> languages = new ArrayList<>(Arrays.asList(Condition.Language.COMMON, Condition.Language.DWARVISH));
 
     Dwarf(Subrace subrace) {
         super(subrace);
@@ -43,7 +46,7 @@ class Elf extends Race {
 
     static Speed speed = new Speed(30);
     static Size size = Size.MEDIUM;
-    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.ELVISH));
+    static List<Condition.Language> languages = new ArrayList<>(Arrays.asList(Condition.Language.COMMON, Condition.Language.ELVISH));
 
     Elf(Subrace subrace) {
         super(subrace);
@@ -58,7 +61,7 @@ class Halfling extends Race {
 
     static Speed speed = new Speed(25);
     static Size size = Size.SMALL;
-    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.HALFLING));
+    static List<Condition.Language> languages = new ArrayList<>(Arrays.asList(Condition.Language.COMMON, Condition.Language.HALFLING));
 
     Halfling(Subrace subrace) {
         super(subrace);
@@ -68,7 +71,7 @@ class Halfling extends Race {
 class Human extends Race {
     static Speed speed = new Speed(30);
     static Size size = Size.MEDIUM;
-    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON));
+    static List<Condition.Language> languages = new ArrayList<>(Arrays.asList(Condition.Language.COMMON));
 
     //+one extra language
 }
@@ -76,7 +79,7 @@ class Human extends Race {
 class Dragonborn extends Race {
     static Speed speed = new Speed(30);
     static Size size = Size.MEDIUM;
-    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.DRACONIC));
+    static List<Condition.Language> languages = new ArrayList<>(Arrays.asList(Condition.Language.COMMON, Condition.Language.DRACONIC));
 }
 
 class Gnome extends Race {
@@ -87,7 +90,7 @@ class Gnome extends Race {
 
     static Speed speed = new Speed(25);
     static Size size = Size.SMALL;
-    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.GNOMISH));
+    static List<Condition.Language> languages = new ArrayList<>(Arrays.asList(Condition.Language.COMMON, Condition.Language.GNOMISH));
 
     Gnome(Subrace subrace) {
         super(subrace);
@@ -97,7 +100,7 @@ class Gnome extends Race {
 class Half_elf extends Race {
     static Speed speed = new Speed(30);
     static Size size = Size.MEDIUM;
-    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.ELVISH));
+    static List<Condition.Language> languages = new ArrayList<>(Arrays.asList(Condition.Language.COMMON, Condition.Language.ELVISH));
 
     //+one extra language
 }
@@ -105,13 +108,13 @@ class Half_elf extends Race {
 class Half_orc extends Race {
     static Speed speed = new Speed(30);
     static Size size = Size.MEDIUM;
-    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.ORC));
+    static List<Condition.Language> languages = new ArrayList<>(Arrays.asList(Condition.Language.COMMON, Condition.Language.ORC));
 }
 
 class Tiefling extends Race {
     static Speed speed = new Speed(30);
     static Size size = Size.MEDIUM;
-    static List<Language> languages = new ArrayList<>(Arrays.asList(Language.COMMON, Language.INFERNAL));
+    static List<Condition.Language> languages = new ArrayList<>(Arrays.asList(Condition.Language.COMMON, Condition.Language.INFERNAL));
 }
 
 

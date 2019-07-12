@@ -1,9 +1,9 @@
 package cz.danakut.dnd;
 
+import cz.danakut.dnd.enums.Condition;
+import cz.danakut.dnd.enums.Sex;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -72,7 +72,7 @@ public class PlayerCharTest {
 
     private String makeLanguageString(PlayerChar testChar) {
         StringBuilder allLanguages = new StringBuilder("");
-        for (Language language : testChar.languages) {
+        for (Condition.Language language : testChar.languages) {
             allLanguages.append(language.toString() + ", ");
         }
         //remove the last comma and space

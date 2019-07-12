@@ -1,4 +1,4 @@
-package cz.danakut.dnd;
+package cz.danakut.dnd.enums;
 
 public enum Sex {
     MALE,

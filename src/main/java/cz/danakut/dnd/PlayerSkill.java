@@ -1,5 +1,7 @@
 package cz.danakut.dnd;
 
+import cz.danakut.dnd.enums.SkillName;
+
 public class PlayerSkill extends Skill{
 
     boolean proficiency;

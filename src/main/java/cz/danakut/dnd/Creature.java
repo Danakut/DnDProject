@@ -1,5 +1,10 @@
 package cz.danakut.dnd;
 
+import cz.danakut.dnd.enums.AbilityName;
+import cz.danakut.dnd.enums.Alignment;
+import cz.danakut.dnd.enums.Condition;
+import cz.danakut.dnd.enums.Size;
+
 import java.util.List;
 import java.util.Map;
 
