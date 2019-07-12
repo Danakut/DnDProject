@@ -1,6 +1,6 @@
 package cz.danakut.dnd;
 
-public enum damageType {
+public enum DamageType {
 
     ACID,
     BLUDGEONING,

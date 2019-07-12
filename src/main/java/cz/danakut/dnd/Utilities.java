@@ -7,9 +7,6 @@ import java.util.regex.Pattern;
 
 public class Utilities {
 
-    public static final int INITIAL_SKILL_VALUE = 0;
-
-
     public static String convertToTextWithFirstCapitalLetters(String toConvert) {
         String changedString;
 
@@ -78,5 +75,7 @@ public class Utilities {
     }
 
 }
+
+//todo add alignment patterns to whitespace
 
 
