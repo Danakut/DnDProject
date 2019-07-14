@@ -10,7 +10,7 @@ public class Skill {
     SkillName name;
     AbilityName associatedAbility;
 
-    Skill(SkillName name) {
+    public Skill(SkillName name) {
         this.name = name;
         this.associatedAbility = findAssociatedAbilityBy(name);
     }
@@ -60,8 +60,7 @@ public class Skill {
     @Override
     public String toString() {
         String convertedName = Utilities.convertToTextWithFirstCapitalLetters(name.toString());
-        String convertedAbility = Utilities.convertToTextWithFirstCapitalLetters(associatedAbility.toString());
-        return convertedAbility + " (" + convertedName + ")";
+        return convertedName;
     }
 
     public SkillName getName() {

@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CharacterDataTest {
 
     @Test
-    @DisplayName("name")
+    @DisplayName("characterName")
     public void testName() {
         CharacterData testChar = new CharacterData();
 
-        testChar.name = "Adam Smith";
-        assertEquals("Adam Smith", testChar.name);
+        testChar.characterName = "Adam Smith";
+        assertEquals("Adam Smith", testChar.characterName);
     }
 
     @Test

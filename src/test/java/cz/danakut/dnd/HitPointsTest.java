@@ -51,5 +51,5 @@ public class HitPointsTest {
         hitpoints.addHitPoints(10);
         assertEquals(45, hitpoints.getCurrent());
     }
-    
+
 }

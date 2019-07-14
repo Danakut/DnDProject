@@ -46,6 +46,11 @@ public class SkillProficiencies {
         }
     }
 
+    boolean hasProficiencyIn(SkillName name) {
+       PlayerSkill skill =  getSkillFromTheList(name);
+       return skill.hasProficiency();
+    }
+
 
 
 

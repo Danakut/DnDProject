@@ -24,7 +24,6 @@ public class PlayerSkill extends Skill{
         return this.proficiency;
     }
 
-
     @Override
     public String toString() {
         return super.toString() + (proficiency ? " - proficient" : "");

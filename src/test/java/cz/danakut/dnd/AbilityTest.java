@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class AbilityTest {
 
     @Test
-    @DisplayName("Ability (name, score) created.")
+    @DisplayName("Ability (characterName, score) created.")
     public void testConstructor() {
         Ability tested = new Ability(AbilityName.CONSTITUTION, 10);
         //custom String is used as actual value instead of Ability.toString,

@@ -20,4 +20,6 @@ public class PlayerSkillTest {
         tested = new PlayerSkill(SkillName.ANIMAL_HANDLING, false);
         assertEquals("Wisdom (Animal Handling)", tested.toString());
     }
+
+
 }

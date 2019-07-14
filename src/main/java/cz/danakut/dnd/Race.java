@@ -20,6 +20,10 @@ public abstract class Race {
     Race(Enum subrace) {
         this.subrace = subrace;
     }
+
+    public Enum getSubrace() {
+        return this.subrace;
+    }
 }
 
 class Dwarf extends Race {
