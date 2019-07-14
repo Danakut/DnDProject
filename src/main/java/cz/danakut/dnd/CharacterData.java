@@ -9,18 +9,14 @@ public class CharacterData {
 
     String name;
     Sex sex;
-    Race race; --
+    Race race;
     Size size;
     Speed speed;
-    List<Language> languages;
-    SkillProficiencies skillProficiencies;
-
-
-
-
-    Abilities abilities;
-    int hitPoints;
     Alignment alignment;
+    Abilities abilities;
+    HitPoints hitPoints;
+    SkillProficiencies skillProficiencies;
+    List<Language> languages;
 
     Map<AbilityName, Integer> savingThrows;
     List<Resistance> damageResistances;
@@ -34,6 +30,7 @@ public class CharacterData {
     //rozdelit equipment model a fighting model; fight nema vybaveni, ale zato mu naskocily efekty a cisla z vybaveni
 
     CharacterData() {
+        hitPoints = new HitPoints(200);
         skillProficiencies = new SkillProficiencies();
     }
 
