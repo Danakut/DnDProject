@@ -1,18 +1,18 @@
 package cz.danakut.dnd;
 
-import cz.danakut.dnd.enums.Condition;
+import cz.danakut.dnd.enums.Language;
 import cz.danakut.dnd.enums.Sex;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlayerCharTest {
+public class CharacterDataTest {
 
     @Test
     @DisplayName("name")
     public void testName() {
-        PlayerChar testChar = new PlayerChar();
+        CharacterData testChar = new CharacterData();
 
         testChar.name = "Adam Smith";
         assertEquals("Adam Smith", testChar.name);
@@ -21,7 +21,7 @@ public class PlayerCharTest {
     @Test
     @DisplayName("sex")
     public void testSex() {
-        PlayerChar testChar = new PlayerChar();
+        CharacterData testChar = new CharacterData();
 
         testChar.sex = Sex.FEMALE;
         assertEquals("FEMALE", testChar.sex.toString());
@@ -30,7 +30,7 @@ public class PlayerCharTest {
     @Test
     @DisplayName("race + subrace")
     public void testRace() {
-        PlayerChar testChar = new PlayerChar();
+        CharacterData testChar = new CharacterData();
 
         testChar.race = new Dwarf(Dwarf.Subrace.HILL);
         assertEquals(Dwarf.Subrace.HILL, testChar.race.subrace );
@@ -43,7 +43,7 @@ public class PlayerCharTest {
     @Test
     @DisplayName("speed")
     public void testSpeed() {
-        PlayerChar testChar = new PlayerChar();
+        CharacterData testChar = new CharacterData();
 
         testChar.speed = Dwarf.speed;
         assertEquals(25, testChar.speed.walk);
@@ -53,7 +53,7 @@ public class PlayerCharTest {
     @Test
     @DisplayName("size")
     public void testSize() {
-        PlayerChar testChar = new PlayerChar();
+        CharacterData testChar = new CharacterData();
 
         testChar.speed = Dwarf.speed;
         assertEquals(25, testChar.speed.walk);
@@ -63,16 +63,16 @@ public class PlayerCharTest {
     @Test
     @DisplayName("languages")
     public void testLanguages() {
-        PlayerChar testChar = new PlayerChar();
+        CharacterData testChar = new CharacterData();
 
         testChar.languages = Elf.languages;
         String languages = makeLanguageString(testChar);
         assertEquals("COMMON, ELVISH", languages);
     }
 
-    private String makeLanguageString(PlayerChar testChar) {
+    private String makeLanguageString(CharacterData testChar) {
         StringBuilder allLanguages = new StringBuilder("");
-        for (Condition.Language language : testChar.languages) {
+        for (Language language : testChar.languages) {
             allLanguages.append(language.toString() + ", ");
         }
         //remove the last comma and space

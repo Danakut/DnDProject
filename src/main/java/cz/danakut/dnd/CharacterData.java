@@ -5,14 +5,14 @@ import cz.danakut.dnd.enums.*;
 import java.util.List;
 import java.util.Map;
 
-public class PlayerChar {
+public class CharacterData {
 
     String name;
     Sex sex;
-    Race race;
+    Race race; --
     Size size;
     Speed speed;
-    List<Condition.Language> languages;
+    List<Language> languages;
     SkillProficiencies skillProficiencies;
 
 
@@ -33,7 +33,7 @@ public class PlayerChar {
 
     //rozdelit equipment model a fighting model; fight nema vybaveni, ale zato mu naskocily efekty a cisla z vybaveni
 
-    PlayerChar() {
+    CharacterData() {
         skillProficiencies = new SkillProficiencies();
     }
 
