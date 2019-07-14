@@ -1,10 +1,9 @@
 package cz.danakut.dnd;
 
-import cz.danakut.dnd.enums.SkillName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DiceThrowerTest {
 
@@ -13,8 +12,8 @@ public class DiceThrowerTest {
     public void test3d6roll() {
         DiceThrower thrower = new DiceThrower();
         int rollResult = thrower.makeRoll(6,3,5);
-        assertEquals(true, rollResult >= 8);
-        assertEquals(true, rollResult <= 23);
+        assertTrue(rollResult >=8, "Result of 3d6+5 should be at least 8.");
+        assertTrue(rollResult <= 23, "Result of 3d6+5 should be less or equal to 23.");
     }
 
     @Test
@@ -22,7 +21,7 @@ public class DiceThrowerTest {
     public void testd20roll() {
         DiceThrower thrower = new DiceThrower();
         int rollResult = thrower.makeRoll(20,1,-1);
-        assertEquals(true, rollResult >= 0);
-        assertEquals(true, rollResult <= 19);
+        assertTrue(rollResult >=0, "Result of d20-1 should be at least 0.");
+        assertTrue(rollResult <= 19, "Result of d20-1 should be less or equal to 19.");
     }
 }
