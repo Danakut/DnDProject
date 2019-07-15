@@ -11,4 +11,9 @@ public class ClassLevel {
         this.level = level;
         this.className = className;
     }
+
+    @Override
+    public String toString() {
+        return level + " " + className;
+    }
 }
