@@ -5,7 +5,7 @@ import cz.danakut.dnd.enums.SkillName;
 
 import java.util.Objects;
 
-public class Skill {
+public class Skill implements Comparable<Skill> {
 
     SkillName name;
     AbilityName associatedAbility;
@@ -69,5 +69,16 @@ public class Skill {
 
     public AbilityName getAssociatedAbility() {
         return associatedAbility;
+    }
+
+    @Override
+    public int compareTo(Skill o) {
+        if (this.associatedAbility.ordinal() > o.associatedAbility.ordinal()) {
+            return 1;
+        } else if (this.associatedAbility.ordinal() < o.associatedAbility.ordinal()) {
+            return -1;
+        } else {
+            return this.name.ordinal() - o.name.ordinal();
+        }
     }
 }
