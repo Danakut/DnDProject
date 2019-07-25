@@ -2,7 +2,7 @@ package cz.danakut.dnd;
 
 import cz.danakut.dnd.enums.AbilityName;
 
-public class Ability {
+public class Ability implements Comparable<Ability> {
 
     private AbilityName name;
     private int score;
@@ -48,5 +48,12 @@ public class Ability {
     @Override
     public String toString() {
         return name + " " + score + "/" +  this.getModifierWithSign();
+    }
+
+    @Override
+    public int compareTo(Ability o) {
+        int orderOfThis = this.name.ordinal();
+        int orderOfThat = o.name.ordinal();
+        return orderOfThis - orderOfThat;
     }
 }

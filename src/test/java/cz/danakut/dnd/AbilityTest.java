@@ -12,8 +12,7 @@ public class AbilityTest {
     @DisplayName("Ability (characterName, score) created.")
     public void testConstructor() {
         Ability tested = new Ability(AbilityName.CONSTITUTION, 10);
-        //custom String is used as actual value instead of Ability.toString,
-        // since getModifierWithSign() - a part of toString() - has not been tested at this point
+        //intentionally not testing modifier sign methods, just basic Strings
         assertEquals("CONSTITUTION 10/0", tested.getName() + " " + tested.getScore() + "/" + tested.getModifier());
     }
 
@@ -53,6 +52,17 @@ public class AbilityTest {
         Exception setScoreException = assertThrows(IllegalArgumentException.class, () ->
                tested.setScore(-5));
 //        assertEquals("Ability score out of bounds (0-30).", setScoreException.getMessage());
+    }
+
+    @Test
+    @DisplayName("Comparator sorts abilities in usual DnD order.")
+    public void testCompareTo() {
+        Ability first = new Ability(AbilityName.STRENGTH, 7);
+        Ability second = new Ability(AbilityName.DEXTERITY, 17);
+        Ability third = new Ability(AbilityName.STRENGTH, 10);
+        assertEquals(-1, first.compareTo(second));
+        assertEquals(1, second.compareTo(first));
+        assertEquals(0, third.compareTo(first));
     }
 
 
