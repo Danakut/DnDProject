@@ -5,13 +5,13 @@
 package cz.danakut.dnd.gui;
 
 import java.awt.*;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import cz.danakut.dnd.CharacterData;
 import cz.danakut.dnd.Exceptions.FileSelectionAbortedException;
 import net.miginfocom.swing.*;
 
@@ -22,6 +22,9 @@ public class MainScreen extends JFrame {
     public MainScreen() {
         initComponents();
         myContentPane = getContentPane();
+        myContentPane.setPreferredSize(new Dimension(800, 600));
+        myContentPane.add(new CharacterPanel(), "cell 0 0");//test
+        pack();
     }
 
     private void mItemLoadFileActionPerformed() {
@@ -81,6 +84,13 @@ public class MainScreen extends JFrame {
         }
     }
 
+    private void mItemSaveFileActionPerformed() {
+        Path pathToSaveLocation = chooseFileToSave();
+        CharacterData data =  new CharacterData();
+        FileParser parser = new FileParser(data);
+        parser.saveCharacterDataToFile(pathToSaveLocation);
+    }
+
     private Path chooseFileToSave() {
         JFileChooser chooser = setupFileChooser();
         Path pathToSaveFile = null;
@@ -91,6 +101,8 @@ public class MainScreen extends JFrame {
         } catch (FileSelectionAbortedException e) {
             //no action needed
         }
+
+        checkOrCreateFileSuffix(pathToSaveFile);
 
 //        rewrite this to automatically add suffix
 //        if (!soubor.getCharacterName().contains(".") && !soubor.exists()) {
@@ -110,6 +122,17 @@ public class MainScreen extends JFrame {
         }
     }
 
+    private void checkOrCreateFileSuffix(Path pathToSaveFile) {
+        String filename = pathToSaveFile.getFileName().toString();
+        if ((!filename.contains(".chs")) && Files.notExists(pathToSaveFile)) {
+            Path parent = pathToSaveFile.getParent();
+
+        }
+
+    }
+
+
+
 
 
 
@@ -119,16 +142,16 @@ public class MainScreen extends JFrame {
         mnBar = new JMenuBar();
         mnFile = new JMenu();
         mItemLoadFile = new JMenuItem();
-        lblPortrait = new JLabel();
-        lblName = new JLabel();
-        lblClass = new JLabel();
+        mItemSaveFile = new JMenuItem();
 
         //======== this ========
         setTitle("Char Generator");
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Container contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
             "hidemode 3",
             // columns
+            "[fill]" +
             "[fill]" +
             "[fill]",
             // rows
@@ -142,28 +165,22 @@ public class MainScreen extends JFrame {
             //======== mnFile ========
             {
                 mnFile.setText("File");
+                mnFile.setMargin(new Insets(5, 5, 5, 5));
 
                 //---- mItemLoadFile ----
-                mItemLoadFile.setText("text");
+                mItemLoadFile.setText("Load File");
+                mItemLoadFile.setMargin(new Insets(10, 11, 10, 10));
                 mItemLoadFile.addActionListener(e -> mItemLoadFileActionPerformed());
                 mnFile.add(mItemLoadFile);
+
+                //---- mItemSaveFile ----
+                mItemSaveFile.setText("Save File");
+                mItemSaveFile.addActionListener(e -> mItemSaveFileActionPerformed());
+                mnFile.add(mItemSaveFile);
             }
             mnBar.add(mnFile);
         }
         setJMenuBar(mnBar);
-
-        //---- lblPortrait ----
-        lblPortrait.setIcon(new ImageIcon("/home/dana/Pictures/npc pics/charrrrr.png"));
-        contentPane.add(lblPortrait, "cell 0 0");
-
-        //---- lblName ----
-        lblName.setText("text");
-        contentPane.add(lblName, "cell 0 1");
-
-        //---- lblClass ----
-        lblClass.setText("text");
-        lblClass.setVisible(false);
-        contentPane.add(lblClass, "cell 0 2");
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -174,9 +191,7 @@ public class MainScreen extends JFrame {
     private JMenuBar mnBar;
     private JMenu mnFile;
     private JMenuItem mItemLoadFile;
-    private JLabel lblPortrait;
-    private JLabel lblName;
-    private JLabel lblClass;
+    private JMenuItem mItemSaveFile;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     Container myContentPane;

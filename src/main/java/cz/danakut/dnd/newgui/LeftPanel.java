@@ -24,6 +24,7 @@ public class LeftPanel extends JPanel {
     private static final float FONTSIZE_TITLE = 16.0f;
     private static final float FONTSIZE_MENU = 20.0f;
     private static final List<String> ABILITY_NAMES  = Arrays.asList("Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma");
+    private static final int PROFICIENCIES_PANEL_MINWIDTH = 190;
 
     private Font defaultFont;
     private Font titleFont;
@@ -48,6 +49,8 @@ public class LeftPanel extends JPanel {
         this.add(acInitSpeed(), "cell 1 1");
         this.add(hitpoints(), "cell 1 2 ");
         this.add(skillProficiencies(), "cell 0 2");
+        this.add(otherProficiencies(), "cell 0 3");
+        this.add(classesAndLevels(), "cell 0 4");
     }
 
     private JPanel portrait() {
@@ -202,35 +205,62 @@ public class LeftPanel extends JPanel {
                 // rows
                 "[]" +
                         "[]"));
-        panel.setName("Hitpoints");
+        panel.setName("HP & Hit Dice");
         panel.setBorder(titledBorderWithTitle(panel.getName()));
 
         JLabel label = new JLabel();
+        label.setText("Hitpoints");
+        panel.add(label, "cell 0 0 2 1");
+
+        label = new JLabel();
         label.setName("Max");
         label.setText(label.getName());
-        panel.add(label, "cell 0 0");
+        panel.add(label, "cell 0 1");
 
         label = new JLabel();
         label.setName("Current");
         label.setText(label.getName());
-        panel.add(label, "cell 1 0");
+        panel.add(label, "cell 1 1");
 
         label = new JLabel();
         label.setName("Temporary");
         label.setText(label.getName());
-        panel.add(label, "cell 2 0");
+        panel.add(label, "cell 2 1");
 
         label = new JLabel();
         label.setText("20");
-        panel.add(label, "cell 0 1");
+        panel.add(label, "cell 0 2");
 
         label = new JLabel();
         label.setText("10");
-        panel.add(label, "cell 1 1");
+        panel.add(label, "cell 1 2");
 
         label = new JLabel();
         label.setText("0");
-        panel.add(label, "cell 2 1");
+        panel.add(label, "cell 2 2");
+
+        label = new JLabel();
+        label.setText("Hit Dice");
+        panel.add(label, "cell 0 4 2 1");
+
+        label = new JLabel();
+        label.setName("Total");
+        label.setText(label.getName());
+        panel.add(label, "cell 0 5");
+
+        label = new JLabel();
+        label.setName("Left");
+        label.setText(label.getName());
+        panel.add(label, "cell 1 5");
+
+        label = new JLabel();
+        label.setText("6");
+        panel.add(label, "cell 0 6");
+
+        label = new JLabel();
+        label.setText("4");
+        panel.add(label, "cell 1 6");
+
 
         return panel;
     }
@@ -247,7 +277,7 @@ public class LeftPanel extends JPanel {
         //
         JPanel panel = new JPanel(new MigLayout("hidemode 3",
                 // columns
-                "[fill, grow]" +
+                "[grow]" +
                         "[]" +
                         "[]",
                 // rows
@@ -256,7 +286,7 @@ public class LeftPanel extends JPanel {
         panel.setBorder(titledBorderWithTitle(panel.getName()));
 
         //fix to widen the panel to accomodate the full width of the title
-        panel.setMinimumSize(new Dimension(180, 20));
+        panel.setMinimumSize(new Dimension(PROFICIENCIES_PANEL_MINWIDTH, 1));
 
 
         JLabel label = new JLabel();
@@ -284,6 +314,113 @@ public class LeftPanel extends JPanel {
         label = new JLabel();
         label.setText("");
         panel.add(label, "cell 2 1");
+
+        return panel;
+    }
+
+    private JPanel otherProficiencies() {
+        String panelRows = "";
+        //docasne reseni, bude nahrazeno modelem postavy z character enginu
+        List<String> listOfSkills = Arrays.asList("Simple Weapons", "Shields", "Artisan's Tools");
+        for (int i = 0; i < listOfSkills.size(); i++) {
+            panelRows += "[]";
+        }
+        //
+        JPanel panel = new JPanel(new MigLayout("hidemode 3",
+                // columns
+                "[grow]" +
+                        "[]" +
+                        "[]",
+                // rows
+                panelRows));
+        panel.setName("Other Proficiencies");
+        panel.setBorder(titledBorderWithTitle(panel.getName()));
+
+        //fix to widen the panel to accomodate the full width of the title
+        panel.setMinimumSize(new Dimension(PROFICIENCIES_PANEL_MINWIDTH, 1));
+
+
+        JLabel label = new JLabel();
+        label.setName(listOfSkills.get(0).toLowerCase());
+        label.setText(label.getName());
+        panel.add(label, "cell 0 0");
+
+        label = new JLabel();
+        label.setText("9");
+        panel.add(label, "cell 1 0");
+
+        label = new JLabel();
+        label.setText("*");
+        panel.add(label, "cell 2 0");
+
+        label = new JLabel();
+        label.setName(listOfSkills.get(1).toLowerCase());
+        label.setText(label.getName());
+        panel.add(label, "cell 0 1");
+
+        label = new JLabel();
+        label.setText("10");
+        panel.add(label, "cell 1 1");
+
+        label = new JLabel();
+        label.setText("");
+        panel.add(label, "cell 2 1");
+
+        label = new JLabel();
+        label.setName(listOfSkills.get(2).toLowerCase());
+        label.setText(label.getName());
+        panel.add(label, "cell 0 2");
+
+        label = new JLabel();
+        label.setText("4");
+        panel.add(label, "cell 1 2");
+
+        label = new JLabel();
+        label.setText("*");
+        panel.add(label, "cell 2 2");
+
+
+        return panel;
+    }
+
+    private JPanel classesAndLevels() {
+        JPanel panel = new JPanel(new MigLayout("hidemode 3",
+                // columns
+                "[][]",
+                // rows
+                "[][]"));
+        //vytvorit metodu, ktera vymysli pocet radku pro kazdou viceradkovou polozku, kde neni pocet radku predem znam
+        panel.setName("Classes & Levels");
+        panel.setBorder(titledBorderWithTitle(panel.getName()));
+        //spolecna metoda na nastaveni sirky - rozdeleni dle druhu panelu?
+        panel.setMinimumSize(new Dimension(165,1));
+
+        JLabel label = new JLabel();
+        label.setText("Cleric");
+        panel.add(label, "cell 0 0");
+
+        label = new JLabel();
+        label.setText("Fighter");
+        panel.add(label, "cell 0 1");
+
+        label = new JLabel();
+        label.setText("4");
+        panel.add(label, "cell 1 0");
+
+        label = new JLabel();
+        label.setText("2");
+        panel.add(label, "cell 1 1");
+
+        label = new JLabel();
+        label.setName("Experience");
+        label.setText(label.getName());
+        panel.add(label, "cell 0 3");
+
+        panel.addLabelWithTextAndOrName("Experience", null, 0, 3);
+
+        label = new JLabel();
+        label.setText("2856");
+        panel.add(label, "cell 1 3");
 
         return panel;
     }

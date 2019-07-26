@@ -5,39 +5,28 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
-			"$columnConstraints": "[fill][fill]"
+			"$columnConstraints": "[fill][fill][fill]"
 			"$rowConstraints": "[][][]"
 		} ) {
 			name: "this"
 			"title": "Char Generator"
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "lblPortrait"
-				"icon": new com.jformdesigner.model.SwingIcon( 1, "/home/dana/Pictures/npc pics/charrrrr.png" )
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 0"
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "lblName"
-				"text": "text"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 1"
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "lblClass"
-				"text": "text"
-				"visible": false
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 2"
-			} )
+			"defaultCloseOperation": 3
 			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
 				name: "mnBar"
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 					name: "mnFile"
 					"text": "File"
+					"margin": new java.awt.Insets( 5, 5, 5, 5 )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "mItemLoadFile"
-						"text": "text"
+						"text": "Load File"
+						"margin": new java.awt.Insets( 10, 11, 10, 10 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "mItemLoadFileActionPerformed", false ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "mItemSaveFile"
+						"text": "Save File"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "mItemSaveFileActionPerformed", false ) )
 					} )
 				} )
 			}

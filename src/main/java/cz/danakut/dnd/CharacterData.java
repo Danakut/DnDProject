@@ -14,7 +14,7 @@ public class CharacterData {
     Size size;
     Speed speed;
     Alignment alignment;
-    Abilities abilities;
+    Abilities abilities; //remake abilities to be just a bunch of i(I?)ntegers; the active Ability class is for the model
     HitPoints hitPoints;
 //    SkillProficiencies skillProficiencies;
     List<ClassLevel> levels;
@@ -35,17 +35,8 @@ public class CharacterData {
 
     //rozdelit equipment model a fighting model; fight nema vybaveni, ale zato mu naskocily efekty a cisla z vybaveni
 
-    CharacterData() {
-        characterName = "Named Character";
-        sex = Sex.FEMALE;
-        race = new Elf(Elf.Subrace.DARK);
-        size = Elf.size;
-        speed = Elf.speed;
-        hitPoints = new HitPoints(42);
-        levels = new ArrayList<>();
-        levels.add(new ClassLevel(1, DndclassName.BARBARIAN));
-        skillProficiencies = new ArrayList<>();
-        skillProficiencies.add(new Skill(SkillName.ANIMAL_HANDLING));
+    public CharacterData() {
+
     }
 
     //function for a variable that is no longer used, but the lambda was hard to get right, so I'm keeping this snippet around O:-)

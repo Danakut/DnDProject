@@ -21,6 +21,9 @@ public abstract class Race {
         this.subrace = subrace;
     }
 
+
+    //todo (maybe) - udělat jednotlivé rasy jako enum objekty (s konstruktorem a vnitřními proměnnými)?
+
     public Enum getSubrace() {
         return this.subrace;
     }
