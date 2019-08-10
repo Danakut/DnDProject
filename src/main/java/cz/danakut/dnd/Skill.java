@@ -73,12 +73,11 @@ public class Skill implements Comparable<Skill> {
 
     @Override
     public int compareTo(Skill o) {
-        if (this.associatedAbility.ordinal() > o.associatedAbility.ordinal()) {
-            return 1;
-        } else if (this.associatedAbility.ordinal() < o.associatedAbility.ordinal()) {
-            return -1;
+        int abilityComparation = this.associatedAbility.compareTo(o.associatedAbility);
+        if (abilityComparation != 0) {
+            return abilityComparation;
         } else {
-            return this.name.ordinal() - o.name.ordinal();
+            return this.name.compareTo(o.name);
         }
     }
 }
