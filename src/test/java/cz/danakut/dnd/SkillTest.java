@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SkillTest {
 
@@ -18,11 +19,12 @@ public class SkillTest {
     @Test
     @DisplayName("Comparator sorts skills in usual DnD order.")
     public void testCompareTo() {
-        Skill first = new Skill(SkillName.ARCANA);
-        Skill second = new Skill(SkillName.DECEPTION);
-        Skill third = new Skill(SkillName.ARCANA);
-        assertEquals(-1, first.compareTo(second));
-        assertEquals(1, second.compareTo(first));
-        assertEquals(0, first.compareTo(third));
+        Skill first = new Skill(SkillName.INVESTIGATION);
+        Skill second = new Skill(SkillName.ARCANA);
+        Skill third = new Skill(SkillName.DECEPTION);
+        Skill fourth = new Skill(SkillName.INVESTIGATION);
+        assertTrue(first.compareTo(second) > 0, "Investigation should come after Arcana.");
+        assertTrue(first.compareTo(third) < 0, "Investigation should come before Deception.");
+        assertTrue(first.compareTo(fourth) == 0, "Investigation should be equal to Investigation.");
     }
 }
